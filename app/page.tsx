@@ -3,6 +3,8 @@ import { Arrow, LogoDefs, Symbol } from "@/components/Logo";
 import Reveal from "@/components/Reveal";
 import Solutions from "@/components/Solutions";
 import TechLogos from "@/components/TechLogos";
+import Odometer from "@/components/Odometer";
+import Words from "@/components/Words";
 
 const EMAIL = "hola@nextwell.com";
 
@@ -91,7 +93,7 @@ const steps = [
   { when: "Primera llamada", rows: [["Conocemos tu negocio y lo que necesitas", "45 min"], ["Definimos qué resolver primero", "misma llamada"]] },
   { when: "Primera semana", rows: [["Te enviamos alcance, tiempos y precio", "2 a 3 días"], ["Revisamos juntos un prototipo", "1 semana"]] },
   { when: "Si es una landing page", rows: [["Te mostramos el primer avance", "semana 1"], ["Entregamos tu landing publicada", "semana 2"]] },
-  { when: "Si es un sistema", rows: [["Te enviamos el avance de la semana", "domingo por la noche"], ["Ajustes según tus comentarios", "continuo"]] },
+  { when: "Si es un sistema", rows: [["Te enviamos el avance de la semana", "domingo por la noche"], ["Soporte independiente, con costo según el alcance", "2 días hábiles"]] },
 ];
 
 // Zigzag cut along the slip's bottom edge.
@@ -157,7 +159,7 @@ export default function Home() {
         </section>
 
         <section className="services" id="servicios" aria-labelledby="srv-title">
-          <h2 id="srv-title" className="sticky-head">Lo que hacemos</h2>
+          <h2 id="srv-title" className="sticky-head" data-words><Words text="Lo que hacemos" /></h2>
           <div className="srv-list">
             {services.map((s, i) => (
               <article className={`srv${i % 2 ? " flip" : ""}`} key={s.title}>
@@ -178,7 +180,7 @@ export default function Home() {
 
         <section className="process" id="proceso" aria-labelledby="proc-title">
           <div className="proc-intro">
-            <h2 id="proc-title" data-reveal>Así trabajamos</h2>
+            <h2 id="proc-title" data-words><Words text="Así trabajamos" /></h2>
             <p data-reveal style={at(1)}>Avanzamos por etapas cortas para que veas resultados pronto y tomes decisiones con algo real en la mano.</p>
             <p className="proc-note" data-reveal style={at(2)}>Los tiempos de una landing page corren desde que nos entregas tus fotos, textos y recursos.</p>
           </div>
@@ -197,34 +199,34 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="pricing" id="precios" aria-labelledby="price-title">
+        <section className="pricing" id="precios" aria-labelledby="price-title" data-play>
           <h2 id="price-title" className="sr">Cómo cobramos</h2>
           <article className="plan-field plan-landing">
             <div>
-              <h3 data-reveal>Landing page</h3>
-              <p className="plan-for" data-reveal style={at(1)}>Para presentar tu negocio y recibir consultas.</p>
-              <p className="plan-inc" data-reveal style={at(2)}>Avance en la primera semana y entrega en la segunda. El soporte y el mantenimiento se acuerdan contigo.</p>
+              <h3>Landing page</h3>
+              <p className="plan-for">Para presentar tu negocio y recibir consultas.</p>
+              <p className="plan-inc">Avance en la primera semana y entrega en la segunda. El soporte y el mantenimiento se acuerdan contigo.</p>
             </div>
             <div className="plan-foot">
-              <p className="price">50/50<small>al iniciar y al entregar</small></p>
+              <p className="price"><span className="sr">50/50</span><span className="half l" aria-hidden="true">50</span><span className="slash" aria-hidden="true">/</span><span className="half r" aria-hidden="true">50</span><small>al iniciar y al entregar</small></p>
               <a className="plan-btn" href="#contacto">Cotizar landing</a>
             </div>
           </article>
           <article className="plan-field plan-system">
             <div>
-              <h3 data-reveal>Sistemas y soluciones</h3>
-              <p className="plan-for" data-reveal style={at(1)}>Para negocios que necesitan organizar citas, pedidos o clientes.</p>
-              <p className="plan-inc" data-reveal style={at(2)}>Un setup inicial adapta la solución a tu negocio y puede pagarse en dos partes. El soporte mensual cubre mantenimiento, alta disponibilidad y cambios dentro del alcance. Los cambios de lógica o de backend, desde Q350.</p>
+              <h3>Sistemas y soluciones</h3>
+              <p className="plan-for">Para negocios que necesitan organizar citas, pedidos o clientes.</p>
+              <p className="plan-inc">Un setup inicial adapta la solución a tu negocio y puede pagarse en dos partes. El soporte mensual cubre mantenimiento, alta disponibilidad y cambios dentro del alcance. Los cambios de lógica o de backend, desde Q350.</p>
             </div>
             <div className="plan-foot">
-              <p className="price">Q650<small>al mes</small></p>
+              <p className="price"><Odometer value="Q650" /><small>al mes</small></p>
               <a className="plan-btn" href="#contacto">Cotizar sistema</a>
             </div>
           </article>
         </section>
 
         <section className="faq" id="preguntas" aria-labelledby="faq-title">
-          <h2 id="faq-title" data-reveal>Preguntas antes de empezar</h2>
+          <h2 id="faq-title" data-words><Words text="Preguntas antes de empezar" /></h2>
           <div className="faq-list">
             {faqs.map(([q, a], i) => (
               <details key={q} data-reveal style={at(i % 3)}>
@@ -248,7 +250,7 @@ export default function Home() {
       </main>
 
       <footer className="foot">
-        <p className="foot-name" aria-hidden="true">nextwell<i>.</i></p>
+        <p className="foot-name" aria-hidden="true" data-words><span className="w"><span>nextwell<i>.</i></span></span></p>
         <div className="foot-row">
           <ul className="places">
             <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>

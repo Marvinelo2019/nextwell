@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nextwell, landing page
 
-## Getting Started
+Sitio de presentación de **Nextwell**: software y soluciones digitales para negocios. Explica qué hace Nextwell (sitios web, sistemas a medida, automatizaciones, soporte, dominios y hosting, infraestructura) y lleva al visitante a pedir una propuesta.
 
-First, run the development server:
+> El siguiente paso hacia algo mejor.
+
+## Tecnologías
+
+- [Next.js 16](https://nextjs.org) con App Router
+- React 19 y TypeScript
+- CSS propio, sin frameworks de estilos ni librerías de animación
+- Tipografías Space Grotesk (títulos) y Plus Jakarta Sans (textos) con `next/font`
+
+## Cómo correrlo
+
+Requiere Node.js 20 o superior.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # desarrollo en http://localhost:3000
+npm run build   # compilación de producción
+npm run lint    # revisión con ESLint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estructura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+app/
+  page.tsx        La página completa: hero, servicios, soluciones, proceso, precios, preguntas y contacto
+  layout.tsx      Fuentes, metadatos y la clase .js que activa las animaciones
+  globals.css     Todos los estilos y animaciones
+components/
+  Logo.tsx        Símbolo N de Nextwell en SVG
+  Reveal.tsx      Activa las animaciones de entrada al hacer scroll
+  Words.tsx       Títulos que suben palabra por palabra
+  Odometer.tsx    Precio que gira dígito por dígito
+  Solutions.tsx   Muestra de proyectos con pestañas
+  TechLogos.tsx   Logos de infraestructura
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Diseño y animación
 
-## Learn More
+- Paleta: rojo `#DF301C`, naranja `#FF9100`, crema `#FFF1D1`, turquesa `#00B7CD` y azul marino `#0F1B2B`.
+- Las animaciones solo usan `transform`, `opacity` y `clip-path`, y se reproducen una vez al entrar en pantalla.
+- Si el sistema tiene activado "reducir movimiento", todo aparece sin animación.
+- Sin JavaScript, la página se muestra completa en su estado final.
 
-To learn more about Next.js, take a look at the following resources:
+## Flujo de trabajo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Se trabaja en la rama `dev` y los cambios pasan a `main` por pull request (GitHub) o merge request (GitLab).
