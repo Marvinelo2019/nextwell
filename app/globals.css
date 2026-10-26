@@ -321,6 +321,36 @@ h1.line { animation: wipe 1300ms var(--ease-expo) 150ms both; }
 @media (hover: hover) and (pointer: fine) { .plan-btn:hover { background: var(--navy-2); } }
 .plan-btn:active { transform: scale(.97); }
 
+/* price pieces: 50/50 halves and the Q650 odometer (final state by default) */
+.half, .slash { display: inline-block; }
+.slash { margin: 0 -.05em; }
+.odo { display: inline-flex; }
+.odo-d { display: inline-block; height: 1em; line-height: 1; overflow: clip; }
+.odo-s { display: flex; flex-direction: column; transform: translateY(calc(var(--n) * -1em)); }
+.odo-s span { height: 1em; line-height: 1; }
+
+/* pricing entrance: color rises like a curtain, then the prices assemble (runs once, via Reveal) */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-play] .plan-field { clip-path: inset(100% 0 0 0); }
+  .js [data-play] .plan-field > div:first-child, .js [data-play] .plan-btn, .js [data-play] .price small, .js [data-play] .half, .js [data-play] .slash { opacity: 0; }
+  .js [data-play] .odo-s { transform: translateY(0); }
+
+  .js [data-play].in .plan-field { animation: curtain 1000ms var(--ease-expo) both; }
+  .js [data-play].in .plan-system { animation-delay: 120ms; }
+  .js [data-play].in .plan-field > div:first-child, .js [data-play].in .plan-btn { animation: lift 700ms var(--ease-expo) 500ms both; }
+  .js [data-play].in .half.l { animation: from-left 900ms var(--ease-expo) 650ms both; }
+  .js [data-play].in .half.r { animation: from-right 900ms var(--ease-expo) 650ms both; }
+  .js [data-play].in .slash { animation: slash 900ms var(--ease-expo) 770ms both; }
+  .js [data-play].in .odo-s { animation: roll 900ms var(--ease-expo) both; animation-delay: calc(770ms + var(--k) * 60ms); }
+  .js [data-play].in .price small { animation: lift 600ms var(--ease-expo) 1100ms both; }
+}
+@keyframes curtain { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes lift { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes from-left { from { opacity: 0; transform: translateX(-60%); } to { opacity: 1; transform: none; } }
+@keyframes from-right { from { opacity: 0; transform: translateX(60%); } to { opacity: 1; transform: none; } }
+@keyframes slash { from { opacity: 0; transform: scaleY(.2); } to { opacity: 1; transform: none; } }
+@keyframes roll { from { transform: translateY(0); } to { transform: translateY(calc(var(--n) * -1em)); } }
+
 @media (max-width: 1000px) {
   .pricing { grid-template-columns: 1fr; }
   .plan-system { order: -1; }

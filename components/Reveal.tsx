@@ -2,11 +2,11 @@
 
 import { useEffect } from "react";
 
-// Adds .in to every [data-reveal] or [data-words] element once it enters the viewport.
+// Adds .in to every [data-reveal], [data-words] or [data-play] element once it enters the viewport.
 // Elements are only hidden while html.js is set and motion is allowed (see globals.css).
 export default function Reveal() {
   useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>("[data-reveal], [data-words]");
+    const els = document.querySelectorAll<HTMLElement>("[data-reveal], [data-words], [data-play]");
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {

@@ -3,6 +3,7 @@ import { Arrow, LogoDefs, Symbol } from "@/components/Logo";
 import Reveal from "@/components/Reveal";
 import Solutions from "@/components/Solutions";
 import TechLogos from "@/components/TechLogos";
+import Odometer from "@/components/Odometer";
 import Words from "@/components/Words";
 
 const EMAIL = "hola@nextwell.com";
@@ -198,27 +199,27 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="pricing" id="precios" aria-labelledby="price-title">
+        <section className="pricing" id="precios" aria-labelledby="price-title" data-play>
           <h2 id="price-title" className="sr">Cómo cobramos</h2>
           <article className="plan-field plan-landing">
             <div>
-              <h3 data-words><Words text="Landing page" /></h3>
-              <p className="plan-for" data-reveal style={at(1)}>Para presentar tu negocio y recibir consultas.</p>
-              <p className="plan-inc" data-reveal style={at(2)}>Avance en la primera semana y entrega en la segunda. El soporte y el mantenimiento se acuerdan contigo.</p>
+              <h3>Landing page</h3>
+              <p className="plan-for">Para presentar tu negocio y recibir consultas.</p>
+              <p className="plan-inc">Avance en la primera semana y entrega en la segunda. El soporte y el mantenimiento se acuerdan contigo.</p>
             </div>
             <div className="plan-foot">
-              <p className="price">50/50<small>al iniciar y al entregar</small></p>
+              <p className="price"><span className="sr">50/50</span><span className="half l" aria-hidden="true">50</span><span className="slash" aria-hidden="true">/</span><span className="half r" aria-hidden="true">50</span><small>al iniciar y al entregar</small></p>
               <a className="plan-btn" href="#contacto">Cotizar landing</a>
             </div>
           </article>
           <article className="plan-field plan-system">
             <div>
-              <h3 data-words><Words text="Sistemas y soluciones" /></h3>
-              <p className="plan-for" data-reveal style={at(1)}>Para negocios que necesitan organizar citas, pedidos o clientes.</p>
-              <p className="plan-inc" data-reveal style={at(2)}>Un setup inicial adapta la solución a tu negocio y puede pagarse en dos partes. El soporte mensual cubre mantenimiento, alta disponibilidad y cambios dentro del alcance. Los cambios de lógica o de backend, desde Q350.</p>
+              <h3>Sistemas y soluciones</h3>
+              <p className="plan-for">Para negocios que necesitan organizar citas, pedidos o clientes.</p>
+              <p className="plan-inc">Un setup inicial adapta la solución a tu negocio y puede pagarse en dos partes. El soporte mensual cubre mantenimiento, alta disponibilidad y cambios dentro del alcance. Los cambios de lógica o de backend, desde Q350.</p>
             </div>
             <div className="plan-foot">
-              <p className="price">Q650<small>al mes</small></p>
+              <p className="price"><Odometer value="Q650" /><small>al mes</small></p>
               <a className="plan-btn" href="#contacto">Cotizar sistema</a>
             </div>
           </article>
